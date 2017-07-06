@@ -1,0 +1,79 @@
+1)
+b)
+P(disease = yes) >= 0.008942
+P(test = positive | disease = no) <= 0.002219
+ 
+2)
+Variables:
+Battery: OK, Dead
+DogBowelTrouble: Yes, No
+Expecting Guests: Yes, No
+Family Home: Yes, No
+LightSensorHealth: OK, Broken
+SoundSensorHealth: OK, Broken
+
+DogBarking: Yes, No
+DogOutside: Yes, No
+HearableBarking: Yes, No
+OutdoorLight: On, Off
+
+LightSensor: On, Off
+SoundSensor: On, Off
+
+Causal structure:
+
+ExpectingGuests->OutdoorLight
+FamilyHome->OutdoorLight
+FamilyHome->DogOutside
+DogBowelTrouble->DogOutside
+DogOutside->DogBarking
+DogBarking->HearableBarking
+OutdoorLight->LightSensor
+LightSensorHealth->LightSensor
+Battery->LightSensor
+Battery->SoundSensor
+HearableBarking->SoundSensor
+SoundSensorHealth->SoundSensor
+
+a)
+I tried setting OutdoorLight = On, HearableBarking = No.
+I obtain the following results
+
+Battery = OK
+DogBarking = No
+DogBowelTrouble = Yes
+DogOutside = No
+ExpectingGuests = No
+FamilyHome = No
+LightSensor = On
+LightSensorHealth = OK
+SoundSensor = Off
+SoundSensorHealth = OK
+
+P(mpe,e) = 0.1175
+P(mpe|e) = 0.4379
+
+b)
+I tried setting FamilyHome = Yes, ExpectingGuests = No.
+I obtain the following results
+
+Battery = OK
+DogBarking = Yes
+DogBowelTrouble = Yes
+DogOutside = Yes
+HearableBarking = Yes 
+LightSensorHealth = OK
+SoundSensorHealth = OK
+LightSensor = Off
+SoundSensor = On
+OutdoorLight = Off
+
+P(mpe,e) = 0.0682
+P(mpe|e) = 0.2558
+
+c)
+Given Z={FamilyHome,Battery}, LightSensor and SoundSensor are independent
+as they are d-separated
+
+d)
+It is a multiply-connected tree

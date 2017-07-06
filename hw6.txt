@@ -1,0 +1,79 @@
+1.
+a) Theta = {x|A}, {y|B}, {z|B}
+b) Not Unifiable
+c) Theta = {x|B}, {y|A}
+d) Theta = {x|John}, {y|John}
+e) Not Unifiable
+
+2)
+a)
+A = All, E = exist ^ = and v = or ~ = not
+
+1) A x1, Food(x1) => Likes(John, x1)
+2) Food(apples)
+3) Food(chicken)
+4) E x2 A y2, Eats(x2,y2) ^ ~ Killed(y2,x2) => Food(y2)
+5) A x3 E y3, Killed(y3,x3) => ~ Alive(x3)
+6) Eats(Bill, peanuts) ^ Alive(Bill)
+7) A x4, Eats(Bill, x4) => Eats(Sue, x4)
+
+b)
+~Food(x1) v Likes(john,x1)			(1)
+Food(apples)					(2)
+Food(chicken)					(3)
+~Eats(F(y2), y2) v Killed(y2, F(y2)) v Food(y2)	(4)
+~Killed(F(x3),x3) v ~Alive(x3)	       		(5)
+Eats(Bill, peanuts)				(6)
+Alive(Bill)					(7)
+~Eats(Bill,x4) v Eats(Sue,x4)			(8)
+
+c)
+
+~Eats(F(y2),y2) v ~Alive(F(y2)) v Food(y2)	(9 = 4 & 5) theta = {x|y2}
+~Alive(Bill) v Food(peanuts)	  		(10 = 9 & 6} theta 
+	       					= {y2|peanuts},{F(y2)|Bill}
+Food(peanuts)					(11 = 10 & 7)
+Likes(John, peanuts)				(12 = 11 & 1)
+PROVEN than John likes peanuts
+
+d)
+
+Eats(Sue, peanuts)				(13 = 6 & 8)
+	  					theta = {x4 | peanuts}
+Sue eats peanuts
+
+e)
+
+~Food(x1) v Likes(john,x1)			(1)
+Food(apples)					(2)
+Food(chicken)					(3)
+~Eats(F(y2), y2) v Killed(y2, F(y2)) v Food(y2)	(4)
+~Killed(F(x3),x3) v ~Alive(x3)	       		(5)
+Eats(x4, F(x4)) | Die(x4)			(6)
+~Die(x5) | ~Alive(x5)	 			(7)
+Alive(Bill)					(8)		
+~Eats(Bill,x6) v Eats(Sue,x6)			(9)
+
+~Die(Bill)     	 				(10 = 7 & 8)
+						theta = {x5|Bill}
+Eats(Bill, F(Bill))				(11 = 10 & 6)
+	   					theta = {x4|Bill}
+Eats(Sue, F(Bill))				(12 = 11 & 9)
+	  					theta = {x6|Bill}
+It means sue eats whatever bill eats.
+However, since we don't know what Bill eats since an axiom is deleted,
+we do not know what Sue eats.
+
+3)
+-Rsat shows that it is Unsatisfiable with 3 colors
+-Rsat shows that it is satisfiable with 4 colors
+-This means that we need at least 4 colors to solve the problem
+Example:
+1 - Green
+2 - Blue
+3 - Red
+4 - Yellow
+5 - Blue
+6 - Red
+7 - Yellow
+-Rsat shows that graph2.txt is satisifiable with 8 colors
